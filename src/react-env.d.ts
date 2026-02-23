@@ -211,3 +211,10 @@ declare module '*.txt' {
   const src: string;
   export default src;
 }
+
+declare module '*.wasm' {
+  const src: string;
+  export default src;
+}
+
+declare const __CERBOS_RULE_ID__: string;

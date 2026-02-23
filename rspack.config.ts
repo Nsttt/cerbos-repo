@@ -1,7 +1,6 @@
 import { defineConfig } from '@rspack/cli';
 import { rspack, type SwcLoaderOptions } from '@rspack/core';
 import { ReactRefreshRspackPlugin } from '@rspack/plugin-react-refresh';
-
 const isDev = process.env.NODE_ENV === 'development';
 
 // Target browsers, see: https://github.com/browserslist/browserslist
@@ -49,6 +48,9 @@ export default defineConfig({
   plugins: [
     new rspack.HtmlRspackPlugin({
       template: './index.html',
+    }),
+    new rspack.DefinePlugin({
+      __CERBOS_RULE_ID__: JSON.stringify(process.env.CERBOS_RULE_ID ?? ''),
     }),
     isDev ? new ReactRefreshRspackPlugin() : null,
   ],
